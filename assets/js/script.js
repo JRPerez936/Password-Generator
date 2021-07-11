@@ -1,8 +1,8 @@
 // Assignment code here
 var upperCase = false;
 var lowerCase = false;
-var nums = false;
-var specials = false;
+var numsBool = false;
+var specialsBool = false;
 
 var generatePassword = function(){
   var pswd = "";
@@ -10,6 +10,7 @@ var generatePassword = function(){
   setPswdLength = parseInt(setPswdLength);
   if(setPswdLength >= 8){
     passwordCriteria();
+    passwordCreate(pswd);
     return pswd;
   }
   else{
@@ -28,12 +29,25 @@ var passwordCriteria = function(){
   }
   var confirmNums = window.prompt("Would you like numbers in your password? enter y for yes and leave blank for no");
   if(confirmNums === "y"){
-    nums = true;
+    numsBool = true;
   }
   var confirmSpecials = window.prompt("Would you like numbers in your password? enter y for yes and leave blank for no");
   if(confirmSpecials === "y"){
-    specials = true;
+    specialsBool = true;
   }
+}
+var passwordCreate = function(input){
+  var uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowers = "abcdefghijklmnopqrstuvwxyz";
+  var nums = "1234567890";
+  var specials = "~`!@#$%^&*()_-+={[}],.<>?";
+  var passwordString="";
+  for(var i = 0; i<input.length; i++){
+    
+  }
+}
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");

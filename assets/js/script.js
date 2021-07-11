@@ -4,17 +4,18 @@ var lowerCase = false;
 var numsBool = false;
 var specialsBool = false;
 var randomNum= 0;
+var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`!@#$%^&*()_-+={[}],.<>?";
+var noNumChars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`!@#$%^&*()_-+={[}],.<>?";
+var letters="abcdefghijklmnopqrstuvwxyz";
+var onlyNums= "1234567890";
+var onlySpecials= "~`!@#$%^&*()_-+={[}],.<>?";
+var lettersAndNums= "abcdefghijklmnopqrstuvwxyz1234567890";
+var lettersAndSpecials= "abcdefghijklmnopqrstuvwxyz~`!@#$%^&*()_-+={[}],.<>?";
+var numsAndSpecials= "1234567890~`!@#$%^&*()_-+={[}],.<>?";
 
 var generatePassword = function(){
   var pswd = "";
-  var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`!@#$%^&*()_-+={[}],.<>?";
-  var noNumChars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`!@#$%^&*()_-+={[}],.<>?";
-  var letters="abcdefghijklmnopqrstuvwxyz";
-  var onlyNums= "1234567890";
-  var onlySpecials= "~`!@#$%^&*()_-+={[}],.<>?";
-  var lettersAndNums= "abcdefghijklmnopqrstuvwxyz1234567890";
-  var lettersAndSpecials= "abcdefghijklmnopqrstuvwxyz~`!@#$%^&*()_-+={[}],.<>?";
-  var numsAndSpecials= "1234567890~`!@#$%^&*()_-+={[}],.<>?";
+  
 
   var setPswdLength = window.prompt("How long would you like your password to be? Enter a number of 8 or greater");
   setPswdLength = parseInt(setPswdLength);

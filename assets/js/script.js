@@ -8,10 +8,13 @@ var randomNum= 0;
 var generatePassword = function(){
   var pswd = "";
   var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`!@#$%^&*()_-+={[}],.<>?";
-  var onlyLowers="abcdefghijklmnopqrstuvwxyz";
-  var onlyUppers="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var noNumChars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`!@#$%^&*()_-+={[}],.<>?";
+  var letters="abcdefghijklmnopqrstuvwxyz";
   var onlyNums= "1234567890";
   var onlySpecials= "~`!@#$%^&*()_-+={[}],.<>?";
+  var lettersAndNums= "abcdefghijklmnopqrstuvwxyz1234567890";
+  var lettersAndSpecials= "abcdefghijklmnopqrstuvwxyz~`!@#$%^&*()_-+={[}],.<>?";
+  var numsAndSpecials= "1234567890~`!@#$%^&*()_-+={[}],.<>?";
 
   var setPswdLength = window.prompt("How long would you like your password to be? Enter a number of 8 or greater");
   setPswdLength = parseInt(setPswdLength);
@@ -25,11 +28,38 @@ var generatePassword = function(){
       if (lowerCase === true && upperCase === true && numsBool === true && specialsBool === false){
         pswd += charset.charAt(Math.floor(Math.random() * (charset.length-onlySpecials.length)));
       }
+      if (lowerCase === true && upperCase === false && numsBool === true && specialsBool === true){
+        pswd += charset.toLowerCase().charAt(Math.floor(Math.random() * (charset.length)));
+      }
+      if (lowerCase === false && upperCase === true && numsBool === true && specialsBool === true){
+        pswd += charset.toUpperCase().charAt(Math.floor(Math.random() * (charset.length)));
+      }
+      if (lowerCase === true && upperCase === true && numsBool === false && specialsBool === true){
+        pswd += noNumChars.charAt(Math.floor(Math.random() * (noNumChars.length)));
+      }
+      if(lowerCase === true  && upperCase == true){
+        pswd += charset.charAt(Math.floor(Math.random() * (charset.length-(onlySpecials.length+onlyNums.length))));
+      }
+      if(lowerCase === true  && numsBool == true){
+        pswd += lettersAndNums.charAt(Math.floor(Math.random() * lettersAndNums.length));
+      }
+      if(lowerCase === true  && specialsBool == true){
+        pswd += lettersAndSpecials.charAt(Math.floor(Math.random() * lettersAndSpecials.length));
+      }
+      if(upperCase === true  && numsBool == true){
+        pswd += lettersAndNums.toUpperCase().charAt(Math.floor(Math.random() * lettersAndNums.length));
+      }
+      if(upperCase === true  && specialsBool == true){
+        pswd += lettersAndSpecials.toUpperCase().charAt(Math.floor(Math.random() * lettersAndSpecials.length));
+      }
+      if(numsBool === true  && specialsBool == true){
+        pswd += numsAndSpecials.charAt(Math.floor(Math.random()* numsAndSpecials.length));
+      }
       if(lowerCase === true){
-        pswd += onlyLowers.charAt(Math.floor(Math.random() * 25));
+        pswd += letters.charAt(Math.floor(Math.random() * 25));
       }
       else if(upperCase === true){
-        pswd += onlyUppers.charAt(Math.floor(Math.random() * 25));
+        pswd += letters.toUpperCase().charAt(Math.floor(Math.random() * 25));
       }
       else if(numsBool === true){
         pswd += onlyNums.charAt(Math.floor(Math.random() * 9));

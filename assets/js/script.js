@@ -8,27 +8,36 @@ var randomNum= 0;
 var generatePassword = function(){
   var pswd = "";
   var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`!@#$%^&*()_-+={[}],.<>?";
+  var onlyLowers="abcdefghijklmnopqrstuvwxyz";
+  var onlyUppers="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var onlyNums= "1234567890";
+  var onlySpecials= "~`!@#$%^&*()_-+={[}],.<>?";
+
   var setPswdLength = window.prompt("How long would you like your password to be? Enter a number of 8 or greater");
   setPswdLength = parseInt(setPswdLength);
-  if(setPswdLength >= 8){
+  if(setPswdLength >= 8 && setPswdLength<=128){
     randomNum = 0;
     passwordCriteria();
     for(var i = 0; i<setPswdLength; i++){
-      if(randomNum === 1){
-        pswd += charset.charAt(Math.floor(Math.random() * 25));
-      }
-      else if(randomNum === 2){
-        pswd += charset.charAt(Math.floor(Math.random() * 51));
-      }
-      else if(randomNum === 3){
-        pswd += charset.charAt(Math.floor(Math.random() * 61));
-      }
-      else if(randomNum === 4){
+      if (lowerCase === true && upperCase === true && numsBool === true && specialsBool === true){
         pswd += charset.charAt(Math.floor(Math.random() * charset.length));
       }
-      else{
-        break;
+      if (lowerCase === true && upperCase === true && numsBool === true && specialsBool === false){
+        pswd += charset.charAt(Math.floor(Math.random() * (charset.length-onlySpecials.length)));
       }
+      if(lowerCase === true){
+        pswd += onlyLowers.charAt(Math.floor(Math.random() * 25));
+      }
+      else if(upperCase === true){
+        pswd += onlyUppers.charAt(Math.floor(Math.random() * 25));
+      }
+      else if(numsBool === true){
+        pswd += onlyNums.charAt(Math.floor(Math.random() * 9));
+      }
+      else if(specialsBool === true){
+        pswd += onlySpecials.charAt(Math.floor(Math.random() * 25));
+      }
+      
     }
     console.log(pswd);
     return pswd;
@@ -39,25 +48,25 @@ var generatePassword = function(){
   }
 }
 var passwordCriteria = function(){
+  upperCase = false;
+  lowerCase = false;
+  numsBool = false;
+  specialsBool = false;
   var confirmLower = window.prompt("Would you like lowercase letters in your password? enter y for yes and leave blank for no");
   if(confirmLower === "y"){
     lowerCase = true;
-    randomNum ++;
   }
   var confirmUpper = window.prompt("Would you like uppercase letters in your password? enter y for yes and leave blank for no");
   if(confirmUpper === "y"){
     upperCase = true;
-    randomNum ++;
   }
   var confirmNums = window.prompt("Would you like numbers in your password? enter y for yes and leave blank for no");
   if(confirmNums === "y"){
     numsBool = true;
-    randomNum ++;
   }
-  var confirmSpecials = window.prompt("Would you like numbers in your password? enter y for yes and leave blank for no");
+  var confirmSpecials = window.prompt("Would you like special characters in your password? enter y for yes and leave blank for no");
   if(confirmSpecials === "y"){
     specialsBool = true;
-    randomNum ++;
   }
   console.log(randomNum);
 }

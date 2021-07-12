@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 This is a website containing my password generator. It has been designed after the mockup shown and contains the function of
 generating a random password based on the users requests. When the user clicks on the generate password button they will be 
 prompted by the webpage, and by responding to those prompts they can generate a custom password of their own.

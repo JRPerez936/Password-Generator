@@ -17,7 +17,7 @@ var generatePassword = function(){
   var pswd = "";
   
 
-  var setPswdLength = window.prompt("How long would you like your password to be? Enter a number of 8 or greater");
+  var setPswdLength = window.prompt("How long would you like your password to be? Enter a number between 8 and 126");
   setPswdLength = parseInt(setPswdLength);
   if(setPswdLength >= 8 && setPswdLength<=128){
     randomNum = 0;
